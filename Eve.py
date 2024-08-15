@@ -26,6 +26,10 @@ def probabilidad_binomial(n,p,k):
     prob = comb * (p ** k) * ((1 - p) ** (n - k))
     #se redondea la prob a 4 decimales
     return round(prob,4)
+    #num de ensayos(n)
+    #probabilidad de exitos(p)
+    #num de exitos(k)
+
 
 #funcion para calcular probabilidad hipergeometrica
 def probabilidad_hipergeometrica(N,K,n,k):
@@ -38,3 +42,7 @@ def probabilidad_hipergeometrica(N,K,n,k):
      #calculamos la probabilidad usando la formula de la probabilidad hipergeometrica
      prob = (comb1 * comb2) / comb3
      return round(prob, 4)
+     #tamaño de la poblacion(N)
+     #num de exitos en la poblacion(K)
+     #tamaño de muestra(n)
+     #num de exitos en la muestra(k)
