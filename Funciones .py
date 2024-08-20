@@ -143,4 +143,3 @@ while True:
         print(f"El resultado es: ", round(resultado, 5))
 
 
-   
