@@ -213,7 +213,7 @@ while True:
                 
                 print(curtosis_fisher)
             
-            elif opcion == "6"
+            elif opcion == "6":
                 print("Creo que anda todo")
                 break
             else:
