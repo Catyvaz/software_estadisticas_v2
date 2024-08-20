@@ -1,7 +1,5 @@
-
-
-
-
+from Funciones import *
+from software_estadistica_v1 import *
 
 while True:
     print("**********************************************")
@@ -14,6 +12,8 @@ while True:
     print("2 = Probabilidad y Estadística")
     print("3 = Salir")
     seleccion = input("Ingrese el número de su opción: ")
+
+    if seleccion == 1:
 
 
 
