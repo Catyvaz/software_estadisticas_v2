@@ -14,17 +14,25 @@ def factorial(n):
     return resultado
 
 def Poisson(lamda, x):
-    lamda = cantidad
     factorial_x = factorial(x)    
     resultado = ((e ** (-lamda)) * (lamda ** x)) / factorial_x
     
     return round(resultado, 6)
 
+def numero(valor):
+    if valor.isdigit():
+        float(valor)
+    else:
+        print("Debe ingresar valores numéricos")
+        return 0
+
+
 while True:
     print("")
     print("Poisson, número de ocurrencias de un evento en un intervalo")
     print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
-    cantidad = float(input("Promedio de ocurrencias en x intervalo: "))
+    cantidad = input("Promedio de ocurrencias en x intervalo: ")
+    cantidad = float(cantidad) if cantidad.isdigit() else print("Debe ingresar valores numéricos")
     valor = int(input("Cuantas veces debe ocurrir el evento? \n Un caso = 1 \n Varios casos = 2 \n --> "))
     if valor == 1:
         usuario_espera = int(input("¿Qué probabilidad quiere calcular?\n x = "))
