@@ -154,7 +154,6 @@ while True:
     elif seleccion == "2":
         print("Se eligió Probabilidad y Estadísticas")
         print("Seleccione qué distribución quiere calcular.")
-        print("1 = Binomial. \n2 = Hipergeométrica. \n3 = Poisson. \n4 =  Coeficiente de Curtosis. \n5 = Normal o Gaussiana.")
         while True:
             print("\nSeleccion de funcion a probar:")
             print("1. Calcular Probabilidad Binomial")
@@ -180,27 +179,26 @@ while True:
                 print(f"Probabilidad Hipergeométrica es: {probabilidad_hipergeometrica(N,K,n,k)}")
 
             elif opcion == "3":
-                while True:
-                    print("Poisson, número de ocurrencias de un evento en un intervalo")
-                    print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
-                    #Se ingresa el valor de lamda, o lo que se espera
-                    cantidad = val_numeros("Promedio de ocurrencias en x intervalo: ", entero = False, simple = True)
-                    #Se pregunta si es la ocurrencia de un solo caso o de varios.
-                    valor = val_numeros("Cuantas veces debe ocurrir el evento? \n Un caso = 1 \n Varios casos = 2 \n --> ", entero = True, simple = False)
-                    
-                    if valor == 1:
-                        #Se evalua una sola posibilidad. ejemplo, que llegue 1 sola persona.
-                        usuario_espera = val_numeros("¿Qué probabilidad quiere calcular?\n x = ", entero = True, simple = True)
-                        print(f"El resultado es: ", Poisson(cantidad, usuario_espera))
-                    elif valor == 2:
-                        #Se evaluan varias probabilidades. ejemplo, que lleguen 2 o 3 personas
-                        print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
-                        limiteI = val_numeros("Que ocurra desde \nx = ", entero = True, simple = True)
-                        limiteF = val_numeros("Hasta \nx = ", entero = True, simple = True)
-                        resultado = 0
-                        for i in range(limiteI, limiteF + 1):
-                            resultado += Poisson(cantidad, i)
-                        print(f"El resultado es: ", round(resultado, 5)) 
+                print("Poisson, número de ocurrencias de un evento en un intervalo")
+                print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
+                #Se ingresa el valor de lamda, o lo que se espera
+                cantidad = val_numeros("Promedio de ocurrencias en x intervalo: ", entero = False, simple = True)
+                #Se pregunta si es la ocurrencia de un solo caso o de varios.
+                valor = val_numeros("Cuantas veces debe ocurrir el evento? \n Un caso = 1 \n Varios casos = 2 \n --> ", entero = True, simple = False)
+                
+                if valor == 1:
+                    #Se evalua una sola posibilidad. ejemplo, que llegue 1 sola persona.
+                    usuario_espera = val_numeros("¿Qué probabilidad quiere calcular?\n x = ", entero = True, simple = True)
+                    print(f"El resultado es: ", Poisson(cantidad, usuario_espera))
+                elif valor == 2:
+                    #Se evaluan varias probabilidades. ejemplo, que lleguen 2 o 3 personas
+                    print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
+                    limiteI = val_numeros("Que ocurra desde \nx = ", entero = True, simple = True)
+                    limiteF = val_numeros("Hasta \nx = ", entero = True, simple = True)
+                    resultado = 0
+                    for i in range(limiteI, limiteF + 1):
+                        resultado += Poisson(cantidad, i)
+                    print(f"El resultado es: ", round(resultado, 5)) 
             elif opcion == "4":
                 nros = input_float_list("Ingrese los datos separados por espacios: ")
                 if len(nros) < 4:
