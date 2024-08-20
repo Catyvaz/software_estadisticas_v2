@@ -1,5 +1,9 @@
 #Funcion para calcular el factorial de un num n
 def factorial(n):
+    #validamos datos dentro del bucle
+    while n < 0:
+        print("Error: n debe ser un numero entero positivo")
+        n = int(input("Ingrese un número para calcular el factorial"))
     #si n es 0 o 1, el factorial es 1
     if n == 0 or n == 1:
         return 1
@@ -14,12 +18,26 @@ def factorial(n):
 
 #funcion para calcular el num comb.
 def combinatorio(n,k):
+    #validamos que k(éxitos de muestra) no sea mayor que n(tamaño de la muestra)
+    while k > n:
+        print("Error. k no puede ser mayor que n")
+        k = int(input(f"Ingrese un valor para k (menor o igual a {n}): "))
     #calculamos num comb usando formula: n! / k! * (n - k)!
     return factorial(n) // (factorial(k) * factorial(n - k))
     #usamos la funcion factorial para calcular los factoriales necesarios.
 
 #funcion para calcular la probabilidad binomial
 def probabilidad_binomial(n,p,k):
+    #Validacion de datos
+    while p < 0 or p > 1:
+        print("Error. La probabilidad p debe estar entre 0 y 1")
+        p = float(input("Ingrese la probabilidad de éxito p (entre 0 y 1): "))
+
+    #Validamos que el núm de éxitos k no sea mayor al núm de ensayos n. 
+    while k > n:
+        print("Error: El número de éxitos k no puede ser mayor que el número de ensayos n.")
+        k = int(input(f"Ingrese un valor para k (menor o igual a {n}): "))
+
     #calculamos la probabilidad combinatoria multiplicada por la probabilidad p elevada a la k
     #y la probabilidad de fracaso (1 - p) elevada a n - k
     comb = combinatorio(n,k)    
@@ -33,12 +51,25 @@ def probabilidad_binomial(n,p,k):
 
 #funcion para calcular probabilidad hipergeometrica
 def probabilidad_hipergeometrica(N,K,n,k):
-    #calculamos C(K,k) que es el num de formas de elegir k éxitos de k éxitos en la poblacion
+     while K > N:
+         print("Error: K no puede ser mayor que N.")
+         K = int(input(f"Ingrese un valor para K (menor o igual  a {N}): "))
+     while k > n:
+         print("Error: k no puede ser mayor que n.")
+         k = int(input(f"Ingrese un valor para k (menor o igual a {n}): "))
+     while k > K:
+         print("Error: k no puede ser mayor que K.")
+         k = int(input(f"Ingrese un valor para k (menor o igual a {K}): "))        
+    #calculamos C(K,k) que es el num de formas de elegir k éxitos de k éxitos en la poblacion     
      comb1 = combinatorio(K,k)
      #calculamos C(N-K, n -k) que es el num de formas de elegir los fracasos de los no-exitos en la poblacion
      comb2 = combinatorio(N - K, n - k)
      #calculamos C(N,n) que es el num de formas de elegir n elementos de una poblacion de tamaño N
      comb3 = combinatorio(N,n)
+
+     while comb3 == 0:
+         print("Error: Division por cero. Verifica los valores de N y n.")
+         N = int(input("Ingrese el tamaño de la población N: "))
      #calculamos la probabilidad usando la formula de la probabilidad hipergeometrica
      prob = (comb1 * comb2) / comb3
      return round(prob, 4)
