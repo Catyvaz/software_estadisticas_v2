@@ -2,19 +2,22 @@ from Funciones import *
 from estadisticas_descriptivas import *
 
 while True:
-    def menu_principal():
-        print("**********************************************")
-        print("****      ESTADÍSTICA DESCRIPTIVA Y       ****")
-        print("****      PROBABILIDAD Y ESTADÍSTICA      ****")
-        print("**********************************************")
+    print("**********************************************")
+    print("****      ESTADÍSTICA DESCRIPTIVA Y       ****")
+    print("****      PROBABILIDAD Y ESTADÍSTICA      ****")
+    print("**********************************************")
 
-        print("Seleccione el módulo que desea utilizar:")
-        print("1 = Estadística Descriptiva")
-        print("2 = Probabilidad y Estadística")
-        print("3 = Salir")
-        seleccion = input("Ingrese el número de su opción: ")
+    print("Seleccione el módulo que desea utilizar:")
+    print("1 = Estadística Descriptiva")
+    print("2 = Probabilidad y Estadística")
+    print("3 = Salir")
+    seleccion = input("Ingrese el número de su opción: ")
     
-    if seleccion == 1:
+    if seleccion == "1":
+        # Estas tres variables serán las utilizadas a lo largo de todo el programa y las que recibirán las funciones
+        conteo = {} # Diccionario con los números y sus respectivas frecuencias
+        conteo_ordenado = {} # Ordenado de forma ascendente
+        nros = [] # Lista con los números ingresados por el usuario
         nros = input_float_list("Ingrese los datos separados por espacios: ")
 
         for i in nros: # Cuenta la frecuencia absoluta de cada número
@@ -148,7 +151,7 @@ while True:
 
             else:
                 print("Opción no válida, por favor seleccione una opción válida.")
-    elif seleccion == 2:
+    elif seleccion == "2":
         print("Se eligió Probabilidad y Estadísticas")
         print("Seleccione qué distribución quiere calcular.")
         print("1 = Binomial. \n2 = Hipergeométrica. \n3 = Poisson. \n4 =  Coeficiente de Curtosis. \n5 = Normal o Gaussiana.")
@@ -219,6 +222,3 @@ while True:
                 break
             else:
                 print("Opcion no valida. Intente de nuevo.")
-
-    if __name__ == "__main__":
-        menu_principal()
