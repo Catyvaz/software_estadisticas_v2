@@ -1,5 +1,5 @@
 from math import e
-
+from software_estadistica_v1 import *
 
 #Funcion para calcular el factorial de un num n
 def factorial(n):
@@ -160,26 +160,15 @@ def val_numeros(mensaje, entero = True, simple = True):
             except:
                 print("Ingrese valores numéricos")
 
+def calcular_curtosis(datos):
+    n = len(datos)
+    media = sum(datos) / n
+    varianza = sum((x - media) ** 2 for x in datos) / n
+    desviacion_estandar = varianza ** 0.5
 
-while True:
-    print("")
-    print("Poisson, número de ocurrencias de un evento en un intervalo")
-    print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
-    #Se ingresa el valor de lamda, o lo que se espera
-    cantidad = val_numeros("Promedio de ocurrencias en x intervalo: ", entero = False, simple = True)
-    #Se pregunta si es la ocurrencia de un solo caso o de varios.
-    valor = val_numeros("Cuantas veces debe ocurrir el evento? \n Un caso = 1 \n Varios casos = 2 \n --> ", entero = True, simple = False)
+    curtosis = sum((x - media) ** 4 for x in datos) / (n * desviacion_estandar ** 4)
     
-    if valor == 1:
-        #Se evalua una sola posibilidad. ejemplo, que llegue 1 sola persona.
-        usuario_espera = val_numeros("¿Qué probabilidad quiere calcular?\n x = ", entero = True, simple = True)
-        print(f"El resultado es: ", Poisson(cantidad, usuario_espera))
-    elif valor == 2:
-        #Se evaluan varias probabilidades. ejemplo, que lleguen 2 o 3 personas
-        print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
-        limiteI = val_numeros("Que ocurra desde \nx = ", entero = True, simple = True)
-        limiteF = val_numeros("Hasta \nx = ", entero = True, simple = True)
-        resultado = 0
-        for i in range(limiteI, limiteF + 1):
-            resultado += Poisson(cantidad, i)
-        print(f"El resultado es: ", round(resultado, 5))
+    # Ajuste de Fisher para obtener la curtosis con sesgo corregido
+    curtosis_fisher = ((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * curtosis - (3 * (n - 1) ** 2) / ((n - 2) * (n - 3))
+    
+    return curtosis_fisher

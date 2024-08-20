@@ -157,6 +157,8 @@ while True:
             print("2. Calcular Probabilidad Hipergeométrica")
             print("3. Poisson.")
             print("4. Coeficiente de Curtosis.")
+            print("5. Coeficiente de Curtosis.")
+            print("6. Salir.")
 
             opcion = input("Ingrese una opción: ")
 
@@ -195,14 +197,25 @@ while True:
                         for i in range(limiteI, limiteF + 1):
                             resultado += Poisson(cantidad, i)
                         print(f"El resultado es: ", round(resultado, 5)) 
+            elif opcion == "4":
+                nros = input_float_list("Ingrese los datos separados por espacios: ")
+                if len(nros) < 4:
+                    return None, "No se puede calcular la curtosis con menos de 4 datos."
+                n = len(datos)
+                media = sum(datos) / n
+                varianza = sum((x - media) ** 2 for x in datos) / n
+                desviacion_estandar = varianza ** 0.5
 
+                curtosis = sum((x - media) ** 4 for x in datos) / (n * desviacion_estandar ** 4)
+                
+                # Ajuste de Fisher para obtener la curtosis con sesgo corregido
+                curtosis_fisher = ((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * curtosis - (3 * (n - 1) ** 2) / ((n - 2) * (n - 3))
+                
+                print(curtosis_fisher)
             
-            
-            
-            elif opcion == "5":
+            elif opcion == "6"
                 print("Creo que anda todo")
                 break
-
             else:
                 print("Opcion no valida. Intente de nuevo.")
 
