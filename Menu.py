@@ -1,18 +1,19 @@
 from Funciones import *
-from software_estadistica_v1 import *
+from estadisticas_descriptivas import *
 
 while True:
-    print("**********************************************")
-    print("****      ESTADÍSTICA DESCRIPTIVA Y       ****")
-    print("****      PROBABILIDAD Y ESTADÍSTICA      ****")
-    print("**********************************************")
+    def menu_principal():
+        print("**********************************************")
+        print("****      ESTADÍSTICA DESCRIPTIVA Y       ****")
+        print("****      PROBABILIDAD Y ESTADÍSTICA      ****")
+        print("**********************************************")
 
-    print("Seleccione el módulo que desea utilizar:")
-    print("1 = Estadística Descriptiva")
-    print("2 = Probabilidad y Estadística")
-    print("3 = Salir")
-    seleccion = input("Ingrese el número de su opción: ")
-
+        print("Seleccione el módulo que desea utilizar:")
+        print("1 = Estadística Descriptiva")
+        print("2 = Probabilidad y Estadística")
+        print("3 = Salir")
+        seleccion = input("Ingrese el número de su opción: ")
+    
     if seleccion == 1:
         nros = input_float_list("Ingrese los datos separados por espacios: ")
 
@@ -200,7 +201,7 @@ while True:
             elif opcion == "4":
                 nros = input_float_list("Ingrese los datos separados por espacios: ")
                 if len(nros) < 4:
-                    return None, "No se puede calcular la curtosis con menos de 4 datos."
+                    print("No se puede calcular la curtosis con menos de 4 datos.")
                 n = len(datos)
                 media = sum(datos) / n
                 varianza = sum((x - media) ** 2 for x in datos) / n
@@ -219,3 +220,5 @@ while True:
             else:
                 print("Opcion no valida. Intente de nuevo.")
 
+    if __name__ == "__main__":
+        menu_principal()
