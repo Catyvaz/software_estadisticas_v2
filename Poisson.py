@@ -67,9 +67,15 @@ while True:
     elif valor == 2:
         #Se evaluan varias probabilidades. ejemplo, que lleguen 2 o 3 personas
         print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
-        limiteI = val_numeros("Que ocurra desde \nx = ", entero = True, simple = True)
-        limiteF = val_numeros("Hasta \nx = ", entero = True, simple = True)
+        while True:
+            limiteI = val_numeros("Que ocurra desde \nx = ", entero = True, simple = True)
+            limiteF = val_numeros("Hasta \nx = ", entero = True, simple = True)
+            if limiteI > limiteF:
+                print("El valor de inicio debe ser menor que el de final")
+            else:
+                break
         resultado = 0
+
         for i in range(limiteI, limiteF + 1):
             resultado += Poisson(cantidad, i)
         print(f"El resultado es: ", round(resultado, 5))
