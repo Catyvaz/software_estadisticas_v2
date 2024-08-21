@@ -166,17 +166,19 @@ while True:
             opcion = input("Ingrese una opción: ")
 
             if opcion == "1":
-                n = int(input("Ingrese el número de ensayos (n): "))
-                p = float(input("Ingrese la probabilidad de éxito (p): "))
-                k = int(input("Ingrese el número de éxitos deseados (k): "))
-                print(f"Probabilidad Binomial P(X = {k}) es: {probabilidad_binomial(n,p,k)}")
-
+                n = val_numeros("Ingrese el número de ensayos (n): ")
+                p = val_numeros("Ingrese la probabilidad de éxito (p): ", entero=False)
+                k = val_numeros("Ingrese el número de éxitos deseados (k): ")
+                print(f"Probabilidad Binomial P(X = {k}) es: {probabilidad_binomial(n, p, k)}")
+            
+            
             elif opcion == "2":
-                N = int(input("Ingrese el tamaño de la población (N): "))
-                K = int(input("Ingrese el número de éxitos en la población (K): "))
-                n = int(input("Ingrese el tamaño de la muestra (n): "))
-                k = int(input("Ingrese el número de éxitos en la muestra (k): "))
-                print(f"Probabilidad Hipergeométrica es: {probabilidad_hipergeometrica(N,K,n,k)}")
+                N = val_numeros("Ingrese el tamaño de la población (N): ")
+                K = val_numeros("Ingrese el número de éxitos en la población (K): ")
+                n = val_numeros("Ingrese el tamaño de la muestra (n): ")
+                k = val_numeros("Ingrese el número de éxitos en la muestra (k): ")
+                print(f"Probabilidad Hipergeométrica es: {probabilidad_hipergeometrica(N, K, n, k)}")
+                
 
             elif opcion == "3":
                 print("Poisson, número de ocurrencias de un evento en un intervalo")

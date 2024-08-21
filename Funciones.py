@@ -55,13 +55,13 @@ def probabilidad_binomial(n,p,k):
 #funcion para calcular probabilidad hipergeometrica
 def probabilidad_hipergeometrica(N,K,n,k):
      while K > N:
-         print("Error: K no puede ser mayor que N.")
+         print("Error: K(éxitos en la poblacion) no puede ser mayor que N(tamaño de la población).")
          K = int(input(f"Ingrese un valor para K (menor o igual  a {N}): "))
      while k > n:
-         print("Error: k no puede ser mayor que n.")
+         print("Error: k(éxitos en la muestra) no puede ser mayor que n(tamaño de muestra).")
          k = int(input(f"Ingrese un valor para k (menor o igual a {n}): "))
      while k > K:
-         print("Error: k no puede ser mayor que K.")
+         print("Error: k(éxitos en la muestra) no puede ser mayor que K(éxitos en la poblacion).")
          k = int(input(f"Ingrese un valor para k (menor o igual a {K}): "))        
     #calculamos C(K,k) que es el num de formas de elegir k éxitos de k éxitos en la poblacion     
      comb1 = combinatorio(K,k)
@@ -80,6 +80,25 @@ def probabilidad_hipergeometrica(N,K,n,k):
      #num de exitos en la poblacion(K)
      #tamaño de muestra(n)
      #num de exitos en la muestra(k)
+
+def val_numeros(mensaje, entero=True,):
+    while True:
+        ingreso = input(mensaje)
+        try:
+            if entero:
+                valor = int(ingreso)
+                if valor < 0:
+                    print("Debe ingresar valores mayores o iguales a 0")
+                else:
+                    return valor
+            else:
+                valor = float(ingreso)
+                if valor < 0:
+                    print("Debe ingresar valores mayores o iguales a 0")
+                else:
+                    return valor
+        except ValueError:
+            print("Ingrese valores numéricos enteros")    
              
 
 def Poisson(lamda, x):
