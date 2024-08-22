@@ -152,7 +152,7 @@ def calcular_curtosis(datos):
     if curtosis_final > 0:
         tipo_curtosis= "Leptocúrtica"
     if curtosis_final == 0:
-        tipo_curtosis = "Mezzocúrtica"
+        tipo_curtosis = "Mesocúrtica"
     if curtosis_final < 0:
         tipo_curtosis= "Platicúrtica"
     
