@@ -207,15 +207,15 @@ while True:
                     print("No se puede calcular la curtosis con menos de 4 datos.")
                 n = len(datos)
                 media = sum(datos) / n
-                varianza = sum((x - media) ** 2 for x in datos) / n
+                varianza = sum((x - media) ** 2 for x in datos) / (n - 1)
                 desviacion_estandar = varianza ** 0.5
 
-                curtosis = sum((x - media) ** 4 for x in datos) / (n * desviacion_estandar ** 4)
+                curtosis = sum((x - media) ** 4 for x in datos) / ((n - 1)* desviacion_estandar ** 4)
                 
                 # Ajuste de Fisher para obtener la curtosis con sesgo corregido
-                curtosis_fisher = ((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * curtosis - (3 * (n - 1) ** 2) / ((n - 2) * (n - 3))
+                curtosis_final = curtosis - 3 #((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * curtosis - (3 * (n - 1) ** 2) / ((n - 2) * (n - 3))
                 
-                print(curtosis_fisher)
+                print(round(curtosis_final, 4))
             
             elif opcion == "6":
                 print("Creo que anda todo")
