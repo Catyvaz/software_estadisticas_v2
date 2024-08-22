@@ -154,7 +154,7 @@ def calcular_curtosis(datos):
 #prueba funcion requisitos 
 
 from typing import List, Tuple
-
+'''
 def calcular_estadisticas_y_curtosis() -> Tuple[float, float, float, float, str]:
     # Solicitar la entrada de números separados por espacios
     nros = input_float_list("Ingrese los datos separados por espacios: ")
@@ -219,3 +219,4 @@ if res_curtosis is not None:
     print(f"Curtosis: {res_curtosis:.4f} ({tipo_curtosis})")
 else:
     print(f"{tipo_curtosis}")
+'''
