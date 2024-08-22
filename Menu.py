@@ -206,7 +206,7 @@ while True:
                 if len(datos) < 4:
                     print("No se puede calcular la curtosis con menos de 4 datos.")
                 curtosis_redondeada, tipo_curtosis = calcular_curtosis(datos)
-                print("El coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado es: ", tipo_curtosis)
+                print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado es: ", tipo_curtosis)
             
             elif opcion == "6":
                 print("Creo que anda todo")
