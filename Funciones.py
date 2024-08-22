@@ -151,9 +151,9 @@ def calcular_curtosis(datos):
     #Determinación del tipo de curtosis
     if curtosis_final > 0:
         tipo_curtosis= "Leptocúrtica"
-    elif curtosis_final == 0:
+    if curtosis_final == 0:
         tipo_curtosis = "Mezzocúrtica"
-    else:
+    if curtosis_final < 0:
         tipo_curtosis= "Platicúrtica"
     
     curtosis_redondeada= round(curtosis_final,4)
