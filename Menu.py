@@ -159,8 +159,8 @@ while True:
             print("1. Calcular Probabilidad Binomial")
             print("2. Calcular Probabilidad Hipergeométrica")
             print("3. Poisson.")
-            print("4. Coeficiente de Curtosis.")
-            print("5. Coeficiente de Curtosis.")
+            print("4. Coeficiente de Curtosis")
+            print("5. Normal o Gaussiana")
             print("6. Salir.")
 
             opcion = input("Ingrese una opción: ")
