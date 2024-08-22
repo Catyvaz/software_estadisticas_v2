@@ -202,8 +202,8 @@ while True:
                         resultado += Poisson(cantidad, i)
                     print(f"El resultado es: ", round(resultado, 5)) 
             elif opcion == "4":
-                nros = input_float_list("Ingrese los datos separados por espacios: ")
-                if len(nros) < 4:
+                datos = input_float_list("Ingrese los datos separados por espacios: ")
+                if len(datos) < 4:
                     print("No se puede calcular la curtosis con menos de 4 datos.")
                 n = len(datos)
                 media = sum(datos) / n
