@@ -137,86 +137,28 @@ def val_numeros(mensaje, entero = True, simple = True):
                     return valor
             except:
                 print("Ingrese valores numéricos")
-'''
 def calcular_curtosis(datos):
     n = len(datos)
     media = sum(datos) / n
-    varianza = sum((x - media) ** 2 for x in datos) / n
+    varianza = sum((x - media) ** 2 for x in datos) / (n - 1)
     desviacion_estandar = varianza ** 0.5
 
-    curtosis = sum((x - media) ** 4 for x in datos) / (n * desviacion_estandar ** 4)
+    curtosis = sum((x - media) ** 4 for x in datos) / ((n - 1)* desviacion_estandar ** 4)
     
-    # Ajuste de Fisher para obtener la curtosis con sesgo corregido
-    curtosis_fisher = ((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * curtosis - (3 * (n - 1) ** 2) / ((n - 2) * (n - 3))
+    #Restamos 3 para que la distribución normal tenga una curtosis de 0, ya que la curtosis de una distribución normal es exactamente 3
+    curtosis_final =  curtosis - 3 
+
+    #Determinación del tipo de curtosis
+    if curtosis_final > 0:
+        tipo_curtosis= "Leptocúrtica"
+    elif curtosis_final == 0:
+        tipo_curtosis = "Mezzocúrtica"
+    else:
+        tipo_curtosis= "Platicúrtica"
     
-    return curtosis_fisher'''
+    curtosis_redondeada= round(curtosis_final,4)
+    return curtosis_redondeada, tipo_curtosis
 
 #prueba funcion requisitos 
 
 from typing import List, Tuple
-'''
-def calcular_estadisticas_y_curtosis() -> Tuple[float, float, float, float, str]:
-    # Solicitar la entrada de números separados por espacios
-    nros = input_float_list("Ingrese los datos separados por espacios: ")
-
-    # Calcular la media
-    suma = sum(nros)
-    res_media = suma / len(nros)
-    res_media_redondeado = round(res_media, 4)
-    
-    # Calcular la varianza
-    sumatoria_varianza = 0
-    for numero in nros:
-        termino = (numero - res_media) ** 2
-        sumatoria_varianza += termino
-
-    if len(nros) != 1:
-        res_varianza = sumatoria_varianza / (len(nros) - 1)  # n-1
-        res_varianza_redondeado = round(res_varianza, 4)
-    else: 
-        res_varianza_redondeado = None
-    
-    # Calcular la desviación estándar
-    if len(nros) != 1:
-        res_desviacion_estandar = res_varianza_redondeado ** 0.5
-        res_desviacion_estandar_redondeado = round(res_desviacion_estandar, 4)
-    else:
-        res_desviacion_estandar_redondeado = None
-    
-    # Calcular la curtosis
-    n = len(nros)
-    if n < 4:
-        res_curtosis, tipo_curtosis = None, "No se puede calcular la curtosis con menos de 4 datos"
-    else:
-        suma_curtosis = sum((numero - res_media) ** 4 for numero in nros)
-        curtosis = suma_curtosis / (n * res_desviacion_estandar_redondeado ** 4)
-        curtosis_fisher = ((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * curtosis - (3 * (n - 1) ** 2) / ((n - 2) * (n - 3))
-
-        if curtosis_fisher > 0:
-            tipo_curtosis = "Leptocúrtica"
-        elif curtosis_fisher == 0:
-            tipo_curtosis = "Mesocúrtica"
-        else:
-            tipo_curtosis = "Platicúrtica"
-        res_curtosis = curtosis_fisher
-    
-    return res_media_redondeado, res_varianza_redondeado, res_desviacion_estandar_redondeado, res_curtosis, tipo_curtosis
-
-# Función auxiliar para validar la entrada de números
-def input_float_list(prompt: str) -> List[float]:
-    while True:
-        try:
-            input_data = input(prompt)
-            return [float(x) for x in input_data.split()]
-        except ValueError:
-            print("Entrada inválida. Por favor, ingrese una lista de números separados por espacios.")
-
-# Llamada a la función
-res_media, res_varianza, res_desviacion_estandar, res_curtosis, tipo_curtosis = calcular_estadisticas_y_curtosis()
-
-# Mostrar los resultados
-if res_curtosis is not None:
-    print(f"Curtosis: {res_curtosis:.4f} ({tipo_curtosis})")
-else:
-    print(f"{tipo_curtosis}")
-'''
