@@ -99,16 +99,16 @@ def menu():
             n = int(input("Ingrese el número de ensayos (n): "))
             p = float(input("Ingrese la probabilidad de éxito (p): "))
             limiteI = int(input("Ingrese el valor mínimo de éxitos k: "))
-            limiteF = int(input("Ingrese el valor máximo de éxitos k: "))
-            print(f"Probabilidad Binomial en el rango [{limiteI}, {limiteF}] es: {probabilidad_binomial(n, p, limiteI, limiteF)}")
+            limiteS = int(input("Ingrese el valor máximo de éxitos k: "))
+            print(f"Probabilidad Binomial en el rango [{limiteI}, {limiteS}] es: {probabilidad_binomial(n, p, limiteI, limiteS)}")
         
         elif opcion == "2":
             N = int(input("Ingrese el tamaño de la población (N): "))
             M = int(input("Ingrese el número de éxitos en la población (M): "))
             n = int(input("Ingrese el tamaño de la muestra (n): "))
             limiteI = int(input("Ingrese el valor mínimo de éxitos k: "))
-            limiteF = int(input("Ingrese el valor máximo de éxitos k: "))
-            print(f"Probabilidad Hipergeométrica en el rango [{limiteI}, {limiteF}] es: {probabilidad_hipergeometrica(N, M, n, limiteI, limiteF)}")
+            limiteS = int(input("Ingrese el valor máximo de éxitos k: "))
+            print(f"Probabilidad Hipergeométrica en el rango [{limiteI}, {limiteS}] es: {probabilidad_hipergeometrica(N, M, n, limiteI, limiteS)}")
         
         elif opcion == "3":
             break
