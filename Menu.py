@@ -211,11 +211,11 @@ while True:
                 print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado es: ", tipo_curtosis)
 
             elif opcion == "5":
-                resultado_normal=calcular_integral_gaussiana
-                print("La Normal o Gaussiana es: ", resultado_normal)
+                #resultado_normal=calcular_integral_gaussiana
+                #print("La Normal o Gaussiana es: ", resultado_normal)
 
                 
-            elif opcion == "6":
+            #elif opcion == "6":
                 print("Creo que anda todo")
                 break
             else:
