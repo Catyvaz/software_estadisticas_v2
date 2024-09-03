@@ -1,34 +1,33 @@
 import math
 from scipy.integrate import quad
-# Función para calcular la distribución gaussiana
+
+# Función de la distribución gaussiana donde se realiza la formula para obtener f(x)
 def distribucion_gaussiana(x, mu, sigma):
-    # Calcular la parte del exponente
-    exponente = -((x - mu) ** 2) / (2 * sigma ** 2)
-    
-    # Calcular la densidad de probabilidad
     coeficiente = 1 / (sigma * math.sqrt(2 * math.pi))
-    densidad_probabilidad = coeficiente * math.exp(exponente) #INTEGRAR
-    #ESTANDARIZAR 
-    
-    return densidad_probabilidad
+    exponente = -((x - mu) ** 2) / (2 * sigma ** 2)
+    return coeficiente * math.exp(exponente)
 
-"""ejemplo para realizar el print correctamente
-print(f"La densidad de probabilidad para x = {x} es: {resultado:.6f}") """
+# Función principal
+def calcular_integral_gaussiana():
+    # Solicitar los parámetros al usuario
+    mu_original = float(input("Ingrese la media/mu (μ) de la distribución: "))
+    sigma_original = float(input("Ingrese la desviación estándar/sigma (σ) de la distribución: "))
+    #Se solicitan los limites para luego estandarizar y calcular la integral
+    a = float(input("Ingrese el límite inferior (a) de integración: "))
+    b = float(input("Ingrese el límite superior (b) de integración: "))
 
-#prueba de funcionamiento ejemplo alturas
-mu = 170
-sigma = 10
-rango_min = 150
-rango_max= 200
+    # Convertir los límites de integración a la distribución normal estandarizada
+    # Se estandariza siguiendo la formula: z = x - mu / sigma
+    z_a = (a - mu_original) / sigma_original
+    z_b = (b - mu_original) / sigma_original
 
-resultado, error = quad(distribucion_gaussiana,rango_min,rango_max,(mu,sigma))
+    # Calcular la integral en la distribución normal estandarizada args(mu=0, sigma=1)
+    resultado_estandarizado, _ = quad(distribucion_gaussiana, z_a, z_b, args=(0, 1))
 
-print(f"Resultado de la integral{resultado}:")
-"""# Rango de valores x
-valores_x = range(150, 200)  # Desde 150 cm hasta 200 cm"""
+    # Imprimir el resultado redondeando a 4 decimales
+    print("Resultado de la integral estandarizada:",round(resultado_estandarizado,4))
 
-"""#Calcular y almacenar las densidades de probabilidad
-valores_y = [distribucion_gaussiana(x, mu, sigma) for x in valores_x]
-#Imprimir los resultados
-for x, y in zip(valores_x, valores_y):
-    print(f"x = {x}, f(x) = {y:.6f}")"""
+# Llamar a la función principal para ejecutar el programa
+# DESMARCAR PARA PROBAR 
+calcular_integral_gaussiana()
+
