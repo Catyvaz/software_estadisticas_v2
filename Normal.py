@@ -16,12 +16,12 @@ def distribucion_gaussiana(x, mu, sigma):
 print(f"La densidad de probabilidad para x = {x} es: {resultado:.6f}") """
 
 #prueba de funcionamiento ejemplo alturas
-mu = 0
-sigma = 1
-rango_min = -1
-rango_max= 1
+mu = 170
+sigma = 10
+rango_min = 150
+rango_max= 200
 
-resultado, error = quad(distribucion_gaussiana,rango_min,rango_max, args(mu,sigma))
+resultado, error = quad(distribucion_gaussiana,rango_min,rango_max,(mu,sigma))
 
 print(f"Resultado de la integral{resultado}:")
 """# Rango de valores x
