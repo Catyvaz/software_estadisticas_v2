@@ -166,6 +166,7 @@ while True:
             opcion = input("Ingrese una opción: ")
 
             if opcion == "1":
+                print("Probabilidad Binomial")
                 n = val_numeros("Ingrese el número de ensayos (n): ", True, True)
                 p = val_numeros("Ingrese la probabilidad de éxito (entre 0 y 1) (p): ", False, True)
                 while p < 0 or p > 1:
@@ -182,14 +183,26 @@ while True:
                 print(f"Probabilidad Binomial en el rango [{limiteI}, {limiteS}] es: {probabilidad_binomial(n, p, limiteI, limiteS)}")
             
             elif opcion == "2":
+                print("Probabilidad Hipergeométrica")
                 N = val_numeros("Ingrese el tamaño de la población (N): ", True, True)
                 M = val_numeros("Ingrese el número de éxitos en la población (M): ", True, True)
+                while M > N:
+                    print("Error: M (éxitos en la población) no puede ser mayor que N (tamaño de la población).")
+                    M = val_numeros(f"Ingrese un valor para M (menor o igual a {N}): ", True, True)
                 n = val_numeros("Ingrese el tamaño de la muestra (n): ", True, True)
+                while n > N:
+                    print("Error: n (tamaño de la muestra) no puede ser mayor que N.")
+                    n = val_numeros(f"Ingrese un valor para n (menor o igual a {N}): ", True, True)
                 limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
                 limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
+                while limiteI > limiteS or limiteI < 0 or limiteS > n or limiteS > M:
+                    print("Error. El límite inferior debe ser menor o igual al límite superior.")
+                    limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
+                    limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
                 print(f"Probabilidad Hipergeométrica en el rango [{limiteI}, {limiteS}] es: {probabilidad_hipergeometrica(N, M, n, limiteI, limiteS)}")    
 
             elif opcion == "3":
+                print("Poisson")
                 print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
                 #Se ingresa el valor de lamda, o lo que se espera
                 cantidad = val_numeros("Promedio de ocurrencias en x intervalo (lamda): ", entero = False, simple = True)
@@ -223,7 +236,7 @@ while True:
                 b = float(input("Ingrese el límite superior (b) de integración: "))
 
                 resultado_normal=calcular_integral_gaussiana(mu_original, sigma_original, a, b)
-                print("La Normal o Gaussiana es: ", resultado_normal)
+                print(f"La Normal o Gaussiana es: {resultado_normal}")
 
             else:          
                 print("Salir")

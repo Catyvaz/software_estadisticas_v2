@@ -22,3 +22,23 @@ if curtosis < 0:
     tipocurtosis= "Platicúrtica"
 
 print(f"El coeficiente de curtosis es: {curtosis} y según su resultado es: " , tipocurtosis)
+
+""" 
+ partes imput eve que no sirven
+    while n < 0 or m < 0:
+        print("Error: m y n deben ser números enteros no negativos")
+        m = int(input("Ingrese un valor para m (número entero no negativo): "))
+        n = int(input("Ingrese un valor para n (número entero no negativo): "))
+    # Validamos que n (éxitos de muestra) no sea mayor que m (tamaño de la muestra)
+    if n > m:
+        print((f"Error. n ({n}) no puede ser mayor que m ({m})"))
+        return None
+    
+    
+    # Validamos datos dentro del bucle
+    while m < 0:
+        print("Error: m debe ser un número entero positivo")
+        m = int(input("Ingrese un número para calcular el factorial: "))
+
+
+ """

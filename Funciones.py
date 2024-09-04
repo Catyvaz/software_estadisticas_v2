@@ -2,10 +2,6 @@ from math import e
 from estadisticas_descriptivas import *
 
 def factorial(m):
-    # Validamos datos dentro del bucle
-    while m < 0:
-        print("Error: m debe ser un número entero positivo")
-        m = int(input("Ingrese un número para calcular el factorial: "))
     # Si m es 0 o 1, el factorial es 1
     if m == 0 or m == 1:
         return 1
@@ -19,14 +15,6 @@ def factorial(m):
     return resultado
 
 def combinatorio(m, n):
-    while n < 0 or m < 0:
-        print("Error: m y n deben ser números enteros no negativos")
-        m = int(input("Ingrese un valor para m (número entero no negativo): "))
-        n = int(input("Ingrese un valor para n (número entero no negativo): "))
-    # Validamos que n (éxitos de muestra) no sea mayor que m (tamaño de la muestra)
-    if n > m:
-        print((f"Error. n ({n}) no puede ser mayor que m ({m})"))
-        return None
     # Calculamos combinatorio usando la fórmula: m! / (n! * (m - n)!)
     return factorial(m) // (factorial(n) * factorial(m - n))
 
@@ -43,19 +31,7 @@ def probabilidad_binomial(n, p, limiteI, limiteS):
     return round(resultado, 4)
     
 # Función para calcular la probabilidad hipergeométrica
-def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):
-    while M > N:
-        print("Error: M (éxitos en la población) no puede ser mayor que N (tamaño de la población).")
-        M = int(input(f"Ingrese un valor para M (menor o igual a {N}): "))
-    while n > N:
-        print("Error: n (tamaño de la muestra) no puede ser mayor que N.")
-        n = int(input(f"Ingrese un valor para n (menor o igual a {N}): "))
-    while limiteI > limiteS or limiteI < 0 or limiteS > n or limiteS > M:
-        print("Error. Los límites deben estar en el rango válido y el límite inferior debe ser menor o igual al límite superior.")
-        limiteI = int(input("Ingrese el valor mínimo de éxitos k: "))
-        limiteS = int(input("Ingrese el valor máximo de éxitos k: "))
-
-    
+def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):   
     resultado = 0
     comb3 = combinatorio(N, n)
     
@@ -89,7 +65,7 @@ def Poisson(lamda, x):
 #Esta función evalua que los valores que se ingresen sean correctos.
 #Se evalua que los que se ingrese sea del tipo numerico, y en caso de no serlo se avisa y se pide que ingrese nuevamente un valor.
 #Se ingresa el mensaje que verá el usuario, se condiciona si tiene que ser entero el valor y con simple si se elige entre dos opciones o no.
-def val_numeros(mensaje, entero = True, simple = True):
+def val_numeros(mensaje, entero = True, lol = True):
     while True:
         ingreso = input(mensaje)
         if entero:
@@ -97,14 +73,6 @@ def val_numeros(mensaje, entero = True, simple = True):
                 valor = int(ingreso)
                 if valor < 0:
                     print("Debe ingresar valores mayores o iguales a 0")
-                else:
-                    if simple:
-                        return valor
-                    else:
-                        if 0 < valor & valor < 3:
-                            return valor
-                        else:
-                            print("Seleccione una opción válida")
             except:
                 print("Ingrese valores numéricos enteros")
         else:
