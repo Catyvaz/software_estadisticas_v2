@@ -203,7 +203,6 @@ while True:
                     for i in range(limiteI, limiteF + 1):
                         resultado += Poisson(cantidad, i)
                     print(f"El resultado es: ", round(resultado, 5)) 
-            
             elif opcion == "4":
                 datos = input_float_list("Ingrese los datos separados por espacios: ")
                 if len(datos) < 4:
@@ -214,9 +213,10 @@ while True:
             elif opcion == "5":
                 resultado_normal=calcular_integral_gaussiana
                 print("La Normal o Gaussiana es: ", resultado_normal)
-            
+
+                
+            #elif opcion == "6":
+                print("Creo que anda todo")
+                break
             else:
                 print("Opcion no valida. Intente de nuevo.")
-                break
-    else:
-        print("Opción no válida, intente de nuevo")
