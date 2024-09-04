@@ -214,9 +214,8 @@ while True:
                 resultado_normal=calcular_integral_gaussiana
                 print("La Normal o Gaussiana es: ", resultado_normal)
 
-                
-            #elif opcion == "6":
-                print("Creo que anda todo")
+            else:          
+                print("Salir")
                 break
-            else:
-                print("Opcion no valida. Intente de nuevo.")
+else:
+    print("Opcion no valida. Intente de nuevo.")
