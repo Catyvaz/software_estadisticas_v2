@@ -81,11 +81,12 @@ def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):
 
     return round(resultado, 4)
 
+#Poisson, se calcula la probabilidad de que ocurra uno o varios eventos, teniendo en cuenta lamda
 def Poisson(lamda, x):
     factorial_x = factorial(x)    
     resultado = ((e ** (-lamda)) * (lamda ** x)) / factorial_x
     
-    return round(resultado, 6)
+    return round(resultado, 4)
 
 def calcular_curtosis(datos):
     n = len(datos)

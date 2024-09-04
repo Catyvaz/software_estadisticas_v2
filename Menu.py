@@ -208,6 +208,7 @@ while True:
                 cantidad = val_numeros("Promedio de ocurrencias en x intervalo (lamda): ", False)
                 print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
                 print("En caso de ser un solo caso, poner el mismo número en ambos límites.")
+                #Definimos los límites. si es un solo número, se pone lo mismo en ambos.
                 limiteI = val_numeros("Valor mínimo \nx = ", True)
                 limiteF = val_numeros("Valor máximo \nx = ", True)
                 while limiteI > limiteF:
