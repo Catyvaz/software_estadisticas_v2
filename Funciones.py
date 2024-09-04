@@ -1,6 +1,29 @@
 from math import e
 from estadisticas_descriptivas import *
 
+#Esta función evalua que los valores que se ingresen sean correctos.
+#Se evalua que los que se ingrese sea del tipo numerico, y en caso de no serlo se avisa y se pide que ingrese nuevamente un valor.
+#Se ingresa el mensaje que verá el usuario, se condiciona si tiene que ser entero el valor y con simple si se elige entre dos opciones o no.
+def val_numeros(mensaje, entero = True, lol = True):
+    while True:
+        ingreso = input(mensaje)
+        if entero:
+            try:
+                valor = int(ingreso)
+                if valor < 0:
+                    print("Debe ingresar valores mayores o iguales a 0")
+            except:
+                print("Ingrese valores numéricos enteros")
+        else:
+            try:
+                valor = float(ingreso)
+                if valor < 0:
+                    print("Debe ingresar valores mayores o iguales a 0")
+                else:
+                    return valor
+            except:
+                print("Ingrese valores numéricos")
+
 def factorial(m):
     # Si m es 0 o 1, el factorial es 1
     if m == 0 or m == 1:
@@ -61,30 +84,6 @@ def Poisson(lamda, x):
     resultado = ((e ** (-lamda)) * (lamda ** x)) / factorial_x
     
     return round(resultado, 6)
-
-#Esta función evalua que los valores que se ingresen sean correctos.
-#Se evalua que los que se ingrese sea del tipo numerico, y en caso de no serlo se avisa y se pide que ingrese nuevamente un valor.
-#Se ingresa el mensaje que verá el usuario, se condiciona si tiene que ser entero el valor y con simple si se elige entre dos opciones o no.
-def val_numeros(mensaje, entero = True, lol = True):
-    while True:
-        ingreso = input(mensaje)
-        if entero:
-            try:
-                valor = int(ingreso)
-                if valor < 0:
-                    print("Debe ingresar valores mayores o iguales a 0")
-            except:
-                print("Ingrese valores numéricos enteros")
-        else:
-            try:
-                valor = float(ingreso)
-                if valor < 0:
-                    print("Debe ingresar valores mayores o iguales a 0")
-                else:
-                    return valor
-            except:
-                print("Ingrese valores numéricos")
-
 
 def calcular_curtosis(datos):
     n = len(datos)
