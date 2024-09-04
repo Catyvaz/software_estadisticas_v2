@@ -4,7 +4,7 @@ from estadisticas_descriptivas import *
 #Esta función evalua que los valores que se ingresen sean correctos.
 #Se evalua que los que se ingrese sea del tipo numerico, y en caso de no serlo se avisa y se pide que ingrese nuevamente un valor.
 #Se ingresa el mensaje que verá el usuario, se condiciona si tiene que ser entero el valor y con simple si se elige entre dos opciones o no.
-def val_numeros(mensaje, entero = True, lol = True):
+def val_numeros(mensaje, entero = True):
     while True:
         ingreso = input(mensaje)
         if entero:
@@ -12,6 +12,8 @@ def val_numeros(mensaje, entero = True, lol = True):
                 valor = int(ingreso)
                 if valor < 0:
                     print("Debe ingresar valores mayores o iguales a 0")
+                else:
+                    return valor
             except:
                 print("Ingrese valores numéricos enteros")
         else:

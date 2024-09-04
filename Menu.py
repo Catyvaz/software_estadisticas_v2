@@ -167,53 +167,53 @@ while True:
 
             if opcion == "1":
                 print("Probabilidad Binomial")
-                n = val_numeros("Ingrese el número de ensayos (n): ", True, True)
-                p = val_numeros("Ingrese la probabilidad de éxito (entre 0 y 1) (p): ", False, True)
+                n = val_numeros("Ingrese el número de ensayos (n): ", True)
+                p = val_numeros("Ingrese la probabilidad de éxito (entre 0 y 1) (p): ", False)
                 while p < 0 or p > 1:
                     print("Error. La probabilidad p debe estar entre 0 y 1.")
-                    p = val_numeros("Ingrese la probabilidad de éxito (entre 0 y 1) (p): ", False, True)
+                    p = val_numeros("Ingrese la probabilidad de éxito (entre 0 y 1) (p): ", False)
                 
                 print("En caso de ser un solo caso, poner el mismo número en ambos limites")
-                limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
-                limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
+                limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True)
+                limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True)
                 while limiteI > limiteS or limiteS > n:
                     print("Error. El límite inferior debe ser menor o igual al límite superior.")
-                    limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
-                    limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
+                    limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True)
+                    limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True)
                 print(f"Probabilidad Binomial en el rango [{limiteI}, {limiteS}] es: {probabilidad_binomial(n, p, limiteI, limiteS)}")
             
             elif opcion == "2":
                 print("Probabilidad Hipergeométrica")
-                N = val_numeros("Ingrese el tamaño de la población (N): ", True, True)
-                M = val_numeros("Ingrese el número de éxitos en la población (M): ", True, True)
+                N = val_numeros("Ingrese el tamaño de la población (N): ", True)
+                M = val_numeros("Ingrese el número de éxitos en la población (M): ", True)
                 while M > N:
                     print("Error: M (éxitos en la población) no puede ser mayor que N (tamaño de la población).")
-                    M = val_numeros(f"Ingrese un valor para M (menor o igual a {N}): ", True, True)
-                n = val_numeros("Ingrese el tamaño de la muestra (n): ", True, True)
+                    M = val_numeros(f"Ingrese un valor para M (menor o igual a {N}): ", True)
+                n = val_numeros("Ingrese el tamaño de la muestra (n): ", True)
                 while n > N:
                     print("Error: n (tamaño de la muestra) no puede ser mayor que N.")
-                    n = val_numeros(f"Ingrese un valor para n (menor o igual a {N}): ", True, True)
-                limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
-                limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
+                    n = val_numeros(f"Ingrese un valor para n (menor o igual a {N}): ", True)
+                limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True)
+                limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True)
                 while limiteI > limiteS or limiteI < 0 or limiteS > n or limiteS > M:
                     print("Error. El límite inferior debe ser menor o igual al límite superior.")
-                    limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
-                    limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
+                    limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True)
+                    limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True)
                 print(f"Probabilidad Hipergeométrica en el rango [{limiteI}, {limiteS}] es: {probabilidad_hipergeometrica(N, M, n, limiteI, limiteS)}")    
 
             elif opcion == "3":
                 print("Poisson")
                 print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
                 #Se ingresa el valor de lamda, o lo que se espera
-                cantidad = val_numeros("Promedio de ocurrencias en x intervalo (lamda): ", entero = False, lol = True)
+                cantidad = val_numeros("Promedio de ocurrencias en x intervalo (lamda): ", False)
                 print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
                 print("En caso de ser un solo caso, poner el mismo número en ambos límites.")
-                limiteI = val_numeros("Valor mínimo \nx = ", entero = True, lol =True)
-                limiteF = val_numeros("Valor máximo \nx = ", entero = True, lol = True)
+                limiteI = val_numeros("Valor mínimo \nx = ", True)
+                limiteF = val_numeros("Valor máximo \nx = ", True)
                 while limiteI > limiteF:
                     print("Error. El límite inferior debe ser menor o igual al límite superior.")
-                    limiteI = val_numeros("Valor mínimo \nx = ", entero = True, lol = True)
-                    limiteF = val_numeros("Valor máximo \nx = ", entero = True, lol = True) 
+                    limiteI = val_numeros("Valor mínimo \nx = ", True)
+                    limiteF = val_numeros("Valor máximo \nx = ", True) 
                 resultado = 0
                 for i in range(limiteI, limiteF + 1):
                     resultado += Poisson(cantidad, i)
@@ -238,8 +238,10 @@ while True:
                 resultado_normal=calcular_integral_gaussiana(mu_original, sigma_original, a, b)
                 print(f"La Normal o Gaussiana es: {resultado_normal}")
 
-            else:          
+            elif opcion == "6":
                 print("Salir")
                 break
+            else:          
+                print("Ingrese una opción válida. Intente de nuevo.")
 else:
     print("Opcion no valida. Intente de nuevo.")
