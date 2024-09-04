@@ -50,7 +50,6 @@ def probabilidad_binomial(n, p, limiteI, limiteS):
         resultado += prob
     return round(resultado, 4)
     
-
 # Función para calcular la probabilidad hipergeométrica
 def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):
     while M > N:
@@ -145,6 +144,7 @@ def val_numeros(mensaje, entero = True, simple = True):
                     return valor
             except:
                 print("Ingrese valores numéricos")
+
 def calcular_curtosis(datos):
     n = len(datos)
     media = sum(datos) / n
