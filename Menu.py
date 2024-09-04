@@ -205,15 +205,15 @@ while True:
                 print("Poisson")
                 print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
                 #Se ingresa el valor de lamda, o lo que se espera
-                cantidad = val_numeros("Promedio de ocurrencias en x intervalo (lamda): ", entero = False, True)
+                cantidad = val_numeros("Promedio de ocurrencias en x intervalo (lamda): ", entero = False, lol = True)
                 print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
                 print("En caso de ser un solo caso, poner el mismo número en ambos límites.")
-                limiteI = val_numeros("Valor mínimo \nx = ", entero = True, True)
-                limiteF = val_numeros("Valor máximo \nx = ", entero = True, True)
+                limiteI = val_numeros("Valor mínimo \nx = ", entero = True, lol =True)
+                limiteF = val_numeros("Valor máximo \nx = ", entero = True, lol = True)
                 while limiteI > limiteF:
                     print("Error. El límite inferior debe ser menor o igual al límite superior.")
-                    limiteI = val_numeros("Valor mínimo \nx = ", entero = True, True)
-                    limiteF = val_numeros("Valor máximo \nx = ", entero = True, True) 
+                    limiteI = val_numeros("Valor mínimo \nx = ", entero = True, lol = True)
+                    limiteF = val_numeros("Valor máximo \nx = ", entero = True, lol = True) 
                 resultado = 0
                 for i in range(limiteI, limiteF + 1):
                     resultado += Poisson(cantidad, i)
