@@ -30,15 +30,7 @@ def combinatorio(m, n):
     # Calculamos combinatorio usando la fórmula: m! / (n! * (m - n)!)
     return factorial(m) // (factorial(n) * factorial(m - n))
 
-def probabilidad_binomial(n, p, limiteI, limiteS):
-    while p < 0 or p > 1:
-        print("Error. La probabilidad p debe estar entre 0 y 1.")
-        p = float(input("Ingrese la probabilidad de éxito p (entre 0 y 1): "))
-
-    while limiteI > limiteS or limiteI < 0 or limiteS > n:
-        print("Error. Los límites deben estar en el rango válido y el límite inferior debe ser menor o igual al límite superior.")
-        limiteI = int(input("Ingrese el valor mínimo de éxitos k: "))
-        limiteS = int(input("Ingrese el valor máximo de éxitos k: "))    
+def probabilidad_binomial(n, p, limiteI, limiteS):    
     #calculamos la probabilidad combinatoria de num de ensayos(n) y num de úxitos (k) #
     # multiplicada por la probabilidad de éxitos (p) elevada al num de úxitos (k)
     #y la probabilidad de fracaso (1 - p) elevada a n - k
@@ -74,12 +66,12 @@ def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):
     for k in range(limiteI, limiteS + 1):    
         comb1 = combinatorio(M, k)
         if comb1 is None:
-            print(f"Error al calcular combinatorio para M, k = {k}. \nSUCESO IMPOSIBLE \nRegresando al menú...")
+            print(f"Error al calcular combinatorio, con k = {k}. \nSUCESO IMPOSIBLE \nRegresando al menú...")
             return 0  # Retorna 0 si hubo un error en combinatorio
 
         comb2 = combinatorio(N - M, n - k)
         if comb2 is None:
-            print(f"Error al calcular combinatorio para N - M, n - k = {k}. \nSUCESO IMPOSIBLE \nRegresando al menú...")
+            print(f"Error al calcular combinatorio, con k = {k}. \nSUCESO IMPOSIBLE \nRegresando al menú...")
             return 0  # Retorna 0 si hubo un error en combinatorio
 
         prob = (comb1 * comb2) / comb3
@@ -87,26 +79,6 @@ def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):
         resultado += prob
 
     return round(resultado, 4)
-
-def val_numeros(mensaje, entero=True,):
-    while True:
-        ingreso = input(mensaje)
-        try:
-            if entero:
-                valor = int(ingreso)
-                if valor < 0:
-                    print("Debe ingresar valores mayores o iguales a 0")
-                else:
-                    return valor
-            else:
-                valor = float(ingreso)
-                if valor < 0:
-                    print("Debe ingresar valores mayores o iguales a 0")
-                else:
-                    return valor
-        except ValueError:
-            print("Ingrese valores numéricos enteros")    
-             
 
 def Poisson(lamda, x):
     factorial_x = factorial(x)    
@@ -145,6 +117,7 @@ def val_numeros(mensaje, entero = True, simple = True):
             except:
                 print("Ingrese valores numéricos")
 
+
 def calcular_curtosis(datos):
     n = len(datos)
     media = sum(datos) / n
@@ -177,14 +150,7 @@ def distribucion_gaussiana(x, mu, sigma):
     return coeficiente * math.exp(exponente)
 
 # Función principal
-def calcular_integral_gaussiana():
-    # Solicitar los parámetros al usuario
-    mu_original = float(input("Ingrese la media/mu (μ) de la distribución: "))
-    sigma_original = float(input("Ingrese la desviación estándar/sigma (σ) de la distribución: "))
-    #Se solicitan los limites para luego estandarizar y calcular la integral
-    a = float(input("Ingrese el límite inferior (a) de integración: "))
-    b = float(input("Ingrese el límite superior (b) de integración: "))
-
+def calcular_integral_gaussiana(mu_original, sigma_original, a, b):
     # Convertir los límites de integración a la distribución normal estandarizada
     # Se estandariza siguiendo la formula: z = x - mu / sigma
     z_a = (a - mu_original) / sigma_original
@@ -198,7 +164,6 @@ def calcular_integral_gaussiana():
 
 # Llamar a la función principal para ejecutar el programa
 # DESMARCAR PARA PROBAR 
-calcular_integral_gaussiana()
 
 #prueba funcion requisitos 
 

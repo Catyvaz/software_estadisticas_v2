@@ -166,43 +166,47 @@ while True:
             opcion = input("Ingrese una opción: ")
 
             if opcion == "1":
-                n = int(input("Ingrese el número de ensayos (n): "))
-                p = float(input("Ingrese la probabilidad de éxito (p): "))
-                limiteI = int(input("Ingrese el valor mínimo de éxitos k: "))
-                limiteS = int(input("Ingrese el valor máximo de éxitos k: "))
+                n = val_numeros("Ingrese el número de ensayos (n): ", True, True)
+                p = val_numeros("Ingrese la probabilidad de éxito (entre 0 y 1) (p): ", False, True)
+                while p < 0 or p > 1:
+                    print("Error. La probabilidad p debe estar entre 0 y 1.")
+                    p = val_numeros("Ingrese la probabilidad de éxito (entre 0 y 1) (p): ", False, True)
+                
+                print("En caso de ser un solo caso, poner el mismo número en ambos limites")
+                limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
+                limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
+                while limiteI > limiteS or limiteS > n:
+                    print("Error. El límite inferior debe ser menor o igual al límite superior.")
+                    limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
+                    limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
                 print(f"Probabilidad Binomial en el rango [{limiteI}, {limiteS}] es: {probabilidad_binomial(n, p, limiteI, limiteS)}")
             
-            
             elif opcion == "2":
-                N = int(input("Ingrese el tamaño de la población (N): "))
-                M = int(input("Ingrese el número de éxitos en la población (M): "))
-                n = int(input("Ingrese el tamaño de la muestra (n): "))
-                limiteI = int(input("Ingrese el valor mínimo de éxitos k: "))
-                limiteS = int(input("Ingrese el valor máximo de éxitos k: "))
-                print(f"Probabilidad Hipergeométrica en el rango [{limiteI}, {limiteS}] es: {probabilidad_hipergeometrica(N, M, n, limiteI, limiteS)}")
-                
+                N = val_numeros("Ingrese el tamaño de la población (N): ", True, True)
+                M = val_numeros("Ingrese el número de éxitos en la población (M): ", True, True)
+                n = val_numeros("Ingrese el tamaño de la muestra (n): ", True, True)
+                limiteI = val_numeros("Ingrese el valor mínimo de éxitos k: ", True, True)
+                limiteS = val_numeros("Ingrese el valor máximo de éxitos k: ", True, True)
+                print(f"Probabilidad Hipergeométrica en el rango [{limiteI}, {limiteS}] es: {probabilidad_hipergeometrica(N, M, n, limiteI, limiteS)}")    
 
             elif opcion == "3":
-                print("Poisson, número de ocurrencias de un evento en un intervalo")
                 print("Recuerde que la probabilidad de ocurrencia debe ser un numero entero mayor que 0")
                 #Se ingresa el valor de lamda, o lo que se espera
-                cantidad = val_numeros("Promedio de ocurrencias en x intervalo: ", entero = False, simple = True)
-                #Se pregunta si es la ocurrencia de un solo caso o de varios.
-                valor = val_numeros("Cuantas veces debe ocurrir el evento? \n Un caso = 1 \n Varios casos = 2 \n --> ", entero = True, simple = False)
-                
-                if valor == 1:
-                    #Se evalua una sola posibilidad. ejemplo, que llegue 1 sola persona.
-                    usuario_espera = val_numeros("¿Qué probabilidad quiere calcular?\n x = ", entero = True, simple = True)
-                    print(f"El resultado es: ", Poisson(cantidad, usuario_espera))
-                elif valor == 2:
-                    #Se evaluan varias probabilidades. ejemplo, que lleguen 2 o 3 personas
-                    print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
-                    limiteI = val_numeros("Que ocurra desde \nx = ", entero = True, simple = True)
-                    limiteF = val_numeros("Hasta \nx = ", entero = True, simple = True)
-                    resultado = 0
-                    for i in range(limiteI, limiteF + 1):
-                        resultado += Poisson(cantidad, i)
-                    print(f"El resultado es: ", round(resultado, 5)) 
+                cantidad = val_numeros("Promedio de ocurrencias en x intervalo (lamda): ", entero = False, simple = True)
+                print("Ingrese la probabilidad de ocurrencia de cuales casos quiere calcular. ejemplo; que ingresen desde 2 hasta 4 personas.")
+                print("En caso de ser un solo caso, poner el mismo número en ambos límites.")
+                limiteI = val_numeros("Valor mínimo \nx = ", entero = True, simple = True)
+                limiteF = val_numeros("Valor máximo \nx = ", entero = True, simple = True)
+                while limiteI > limiteF:
+                    print("Error. El límite inferior debe ser menor o igual al límite superior.")
+                    limiteI = val_numeros("Valor mínimo \nx = ", entero = True, simple = True)
+                    limiteF = val_numeros("Valor máximo \nx = ", entero = True, simple = True) 
+                resultado = 0
+                for i in range(limiteI, limiteF + 1):
+                    resultado += Poisson(cantidad, i)
+                    print(f"La probabilidad de Poisson para x = {i} es: {round(Poisson(cantidad, i), 4)}")
+                print(f"El resultado es: ", round(resultado, 4)) 
+        
             elif opcion == "4":
                 datos = input_float_list("Ingrese los datos separados por espacios: ")
                 if len(datos) < 4:
@@ -211,7 +215,14 @@ while True:
                 print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado es: ", tipo_curtosis)
 
             elif opcion == "5":
-                resultado_normal=calcular_integral_gaussiana
+                # Solicitar los parámetros al usuario
+                mu_original = float(input("Ingrese la media/mu (μ) de la distribución: "))
+                sigma_original = float(input("Ingrese la desviación estándar/sigma (σ) de la distribución: "))
+                #Se solicitan los limites para luego estandarizar y calcular la integral
+                a = float(input("Ingrese el límite inferior (a) de integración: "))
+                b = float(input("Ingrese el límite superior (b) de integración: "))
+
+                resultado_normal=calcular_integral_gaussiana(mu_original, sigma_original, a, b)
                 print("La Normal o Gaussiana es: ", resultado_normal)
 
             else:          
