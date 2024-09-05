@@ -80,6 +80,12 @@ def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):
             return 0  # Retorna 0 si hubo un error en combinatorio
 
         prob = (comb1 * comb2) / comb3
+        
+        if prob == 0:
+            print(f"La probabilidad hipergeométrica para k = {k} es: {round(prob, 4)}. \nSUCESO IMPOSIBLE")
+        
+        resultado += prob
+
         print(f"La probabilidad hipergeométrica para k = {k} es: {round(prob, 4)}")
         resultado += prob
 
