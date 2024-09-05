@@ -241,7 +241,7 @@ while True:
 
                 datos = input_float_list("Ingrese los datos separados por espacios: ")
                 curtosis_redondeada, tipo_curtosis = calcular_curtosis(datos)
-                print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado es: ", tipo_curtosis)
+                print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado  ", tipo_curtosis)
 
             elif opcion == "5":
                 # Solicitar los parámetros al usuario
