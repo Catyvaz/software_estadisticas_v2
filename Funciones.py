@@ -94,25 +94,33 @@ def Poisson(lamda, x):
 
 def calcular_curtosis(datos):
     n = len(datos)
+    # Calcula la media
     media = sum(datos) / n
-    varianza = sum((x - media) ** 2 for x in datos) / (n - 1)
-    desviacion_estandar = varianza ** 0.5
+    # Calcula la desviación estándar
+    #desviacion = (sum((x - media) ** 2 for x in datos) / (n - 1)) ** 0.5
+    desviacion = desviacion_estandar(datos)
 
-    curtosis = sum((x - media) ** 4 for x in datos) / ((n - 1)* desviacion_estandar ** 4)
-    
-    #Restamos 3 para que la distribución normal tenga una curtosis de 0, ya que la curtosis de una distribución normal es exactamente 3
-    curtosis_final =  curtosis - 3 
+    # Calculo de la suma de la cuarta potencia
+    suma_cuarta_potencia = sum((x - media) ** 4 for x in datos)
 
-    #Determinación del tipo de curtosis
-    if curtosis_final > 0:
-        tipo_curtosis= "Leptocúrtica"
-    if curtosis_final == 0:
-        tipo_curtosis = "Mesocúrtica"
-    if curtosis_final < 0:
-        tipo_curtosis= "Platicúrtica"
+    # Fórmula corregida para la curtosis
+    curtosis = ((n * (n + 1) * suma_cuarta_potencia) / ((n - 1) * (n - 2) * (n - 3) * (desviacion ** 4))) - \
+               (3 * (n - 1) ** 2) / ((n - 2) * (n - 3))
+
+    # Determinación del tipo de curtosis
+    if curtosis == 0:
+        print("La distribución es mesocúrtica")
+        interpretación = "La distribución es mesocúrtica"
+    elif curtosis > 0:
+        print("La distribución es leptocúrtica")
+        interpretación = "La distribución es leptocúrtica"
+    else:
+        print("La distribución es platicúrtica")
+        interpretación = "La distribución es platicúrtica"
     
-    curtosis_redondeada= round(curtosis_final,4)
-    return curtosis_redondeada, tipo_curtosis
+    # Redondeo de la curtosis
+    return round(curtosis, 4), interpretación
+
 
 # Función de la distribución gaussiana donde se realiza la formula para obtener f(x)
 def distribucion_gaussiana(x, mu, sigma):

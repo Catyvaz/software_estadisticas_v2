@@ -222,11 +222,26 @@ while True:
                 print(f"El resultado es: ", round(resultado, 4)) 
         
             elif opcion == "4":
+                def input_float_list(prompt):
+                    while True:
+                        try:
+                            # Tomamos la entrada del usuario y convertimos a lista de flotantes
+                            datos = list(map(float, input(prompt).split()))
+                            return datos
+                        except ValueError:
+                            print("Error: Ingrese solo números separados por espacios.")
+                
                 datos = input_float_list("Ingrese los datos separados por espacios: ")
-                if len(datos) < 4:
+                while len(datos) < 4:
                     print("No se puede calcular la curtosis con menos de 4 datos.")
+                    break
+                while len(set(datos)) == 1:
+                    print("No se puede calcular la curtosis si todos los datos son iguales.")
+                    datos = input_float_list("Ingrese los datos separados por espacios: ")
+
+                datos = input_float_list("Ingrese los datos separados por espacios: ")
                 curtosis_redondeada, tipo_curtosis = calcular_curtosis(datos)
-                print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado es: ", tipo_curtosis)
+                print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado  ", tipo_curtosis)
 
             elif opcion == "5":
                 # Solicitar los parámetros al usuario
