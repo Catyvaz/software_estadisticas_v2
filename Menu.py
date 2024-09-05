@@ -222,6 +222,7 @@ while True:
                 print(f"El resultado es: ", round(resultado, 4)) 
         
             elif opcion == "4":
+                print("Coeficiente de Curtosis")
                 def input_float_list(prompt):
                     while True:
                         try:
@@ -239,7 +240,6 @@ while True:
                     print("No se puede calcular la curtosis si todos los datos son iguales.")
                     datos = input_float_list("Ingrese los datos separados por espacios: ")
 
-                datos = input_float_list("Ingrese los datos separados por espacios: ")
                 curtosis_redondeada, tipo_curtosis = calcular_curtosis(datos)
                 print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado  ", tipo_curtosis)
 
