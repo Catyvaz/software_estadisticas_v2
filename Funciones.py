@@ -1,5 +1,9 @@
 from math import e
 from estadisticas_descriptivas import *
+import math
+from scipy.integrate import quad
+from typing import List, Tuple
+
 
 #Esta función evalua que los valores que se ingresen sean correctos.
 #Se evalua que los que se ingrese sea del tipo numerico, y en caso de no serlo se avisa y se pide que ingrese nuevamente un valor.
@@ -110,9 +114,6 @@ def calcular_curtosis(datos):
     curtosis_redondeada= round(curtosis_final,4)
     return curtosis_redondeada, tipo_curtosis
 
-import math
-from scipy.integrate import quad
-
 # Función de la distribución gaussiana donde se realiza la formula para obtener f(x)
 def distribucion_gaussiana(x, mu, sigma):
     coeficiente = 1 / (sigma * math.sqrt(2 * math.pi))
@@ -130,11 +131,12 @@ def calcular_integral_gaussiana(mu_original, sigma_original, a, b):
     resultado_estandarizado, _ = quad(distribucion_gaussiana, z_a, z_b, args=(0, 1))
 
     # Imprimir el resultado redondeando a 4 decimales
-    print("Resultado de la integral estandarizada:",round(resultado_estandarizado,4))
+    resultado_Gaussiana=round(resultado_estandarizado,4)
+    return resultado_Gaussiana
 
 # Llamar a la función principal para ejecutar el programa
 # DESMARCAR PARA PROBAR 
 
 #prueba funcion requisitos 
 
-from typing import List, Tuple
+

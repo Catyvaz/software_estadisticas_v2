@@ -230,14 +230,44 @@ while True:
 
             elif opcion == "5":
                 # Solicitar los parámetros al usuario
-                mu_original = float(input("Ingrese la media/mu (μ) de la distribución: "))
-                sigma_original = float(input("Ingrese la desviación estándar/sigma (σ) de la distribución: "))
-                #Se solicitan los limites para luego estandarizar y calcular la integral
-                a = float(input("Ingrese el límite inferior (a) de integración: "))
-                b = float(input("Ingrese el límite superior (b) de integración: "))
+                mu_original = val_numeros("Ingrese la media/mu (μ) de la distribución: ",False)
+                
+                while True:
+                    sigma_original =val_numeros("Ingrese la desviación estándar/sigma (σ) de la distribución: ",False)
+                    if sigma_original == 0:
+                        print("La desviación estandar o sigma no pude ser igual a 0")
+                        
+                    else:
+                        break
 
-                resultado_normal=calcular_integral_gaussiana(mu_original, sigma_original, a, b)
-                print(f"La Normal o Gaussiana es: {resultado_normal}")
+                #Se solicitan los limites para luego estandarizar y calcular la integral
+                while True:
+                    
+                    a = input("Ingrese el límite inferior (a) de integración: ")
+                    try:
+                        valor = float(a)
+                        a = valor
+            
+                    except:
+                        print("Ingrese valores numéricos")   
+
+                    b = input("Ingrese el límite superior (b) de integración: ")
+                    try:
+                        valor = float(b)
+                        b = valor
+            
+                    except:
+                        print("Ingrese valores numéricos")   
+            
+                    if a>b:
+                        print("El limite inferior no pude ser mayor al superior. Ingrese nuevamente los datos.")
+                    
+                    if a==b:
+                        print("El limite inferior y el limite superior no pueden ser iguales. Ingrese nuevamente los datos.")
+                    else:
+                        resultado_normal=calcular_integral_gaussiana(mu_original, sigma_original, a, b)
+                        print(f"La Normal o Gaussiana es: {resultado_normal}")
+                        break
 
             elif opcion == "6":
                 print("Salir")
