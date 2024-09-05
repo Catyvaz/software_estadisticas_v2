@@ -235,6 +235,7 @@ while True:
                 datos = input_float_list("Ingrese los datos separados por espacios: ")
                 while len(datos) < 4:
                     print("No se puede calcular la curtosis con menos de 4 datos.")
+                    datos = input_float_list("Ingrese los datos separados por espacios: ")
                     break
                 while len(set(datos)) == 1:
                     print("No se puede calcular la curtosis si todos los datos son iguales.")
