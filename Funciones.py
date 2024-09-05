@@ -65,22 +65,24 @@ def probabilidad_hipergeometrica(N, M, n, limiteI, limiteS):
     comb3 = combinatorio(N, n)
     
     if comb3 is None:
-        print("Error: División por cero. Verifica los valores de N y n. \nSUCESO IMPOSIBLE \nRegresando al menú...")
+        print("Error: División por cero. Verifica los valores de N y n. \nSUCESO IMPOSIBLE")
         return 0  # Retorna 0 si hubo un error en combinatorio
 
     for k in range(limiteI, limiteS + 1):    
         comb1 = combinatorio(M, k)
         if comb1 is None:
-            print(f"Error al calcular combinatorio, con k = {k}. \nSUCESO IMPOSIBLE \nRegresando al menú...")
+            print(f"Error al calcular combinatorio, con k = {k}. \nSUCESO IMPOSIBLE")
             return 0  # Retorna 0 si hubo un error en combinatorio
 
         comb2 = combinatorio(N - M, n - k)
         if comb2 is None:
-            print(f"Error al calcular combinatorio, con k = {k}. \nSUCESO IMPOSIBLE \nRegresando al menú...")
+            print(f"Error al calcular combinatorio, con k = {k}. \nSUCESO IMPOSIBLE")
             return 0  # Retorna 0 si hubo un error en combinatorio
 
         prob = (comb1 * comb2) / comb3
-        print(f"La probabilidad hipergeométrica para k = {k} es: {round(prob, 4)}")
+        if prob == 0:
+            print(f"La probabilidad hipergeométrica para k = {k} es: {round(prob, 4)}. \nSUCESO IMPOSIBLE")
+        
         resultado += prob
 
     return round(resultado, 4)
