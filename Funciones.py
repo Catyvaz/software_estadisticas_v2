@@ -110,16 +110,16 @@ def calcular_curtosis(datos):
     # Determinación del tipo de curtosis
     if curtosis == 0:
         print("La distribución es mesocúrtica")
-        interpretación = "La distribución es mesocúrtica"
+        tipo_curtosis = "La distribución es mesocúrtica"
     elif curtosis > 0:
         print("La distribución es leptocúrtica")
-        interpretación = "La distribución es leptocúrtica"
+        tipo_curtosis = "La distribución es leptocúrtica"
     else:
         print("La distribución es platicúrtica")
-        interpretación = "La distribución es platicúrtica"
+        tipo_curtosis = "La distribución es platicúrtica"
     
     # Redondeo de la curtosis
-    return round(curtosis, 4), interpretación
+    return round(curtosis, 4), tipo_curtosis
 
 
 # Función de la distribución gaussiana donde se realiza la formula para obtener f(x)
