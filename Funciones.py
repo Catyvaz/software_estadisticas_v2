@@ -116,13 +116,13 @@ def calcular_curtosis(datos):
     # Determinación del tipo de curtosis
     if curtosis == 0:
         print("La distribución es mesocúrtica")
-        tipo_curtosis = "La distribución es mesocúrtica"
+        tipo_curtosis = "la distribución es mesocúrtica"
     elif curtosis > 0:
         print("La distribución es leptocúrtica")
-        tipo_curtosis = "La distribución es leptocúrtica"
+        tipo_curtosis = "la distribución es leptocúrtica"
     else:
         print("La distribución es platicúrtica")
-        tipo_curtosis = "La distribución es platicúrtica"
+        tipo_curtosis = "la distribución es platicúrtica"
     
     # Redondeo de la curtosis
     return round(curtosis, 4), tipo_curtosis
