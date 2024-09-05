@@ -244,25 +244,21 @@ while True:
                 print("\nEl coeficiente de curtosis es: ",curtosis_redondeada," y según su resultado  ", tipo_curtosis)
 
             elif opcion == "5":
+                print("Distribución Normal o Gaussiana")
                 # Solicitar los parámetros al usuario
                 mu_original = val_numeros("Ingrese la media/mu (μ) de la distribución: ",False)
-                
                 while True:
                     sigma_original =val_numeros("Ingrese la desviación estándar/sigma (σ) de la distribución: ",False)
                     if sigma_original == 0:
                         print("La desviación estandar o sigma no pude ser igual a 0")
-                        
                     else:
                         break
-
                 #Se solicitan los limites para luego estandarizar y calcular la integral
                 while True:
-                    
                     a = input("Ingrese el límite inferior (a) de integración: ")
                     try:
                         valor = float(a)
                         a = valor
-            
                     except:
                         print("Ingrese valores numéricos")   
 
@@ -270,13 +266,10 @@ while True:
                     try:
                         valor = float(b)
                         b = valor
-            
                     except:
                         print("Ingrese valores numéricos")   
-            
                     if a>b:
                         print("El limite inferior no pude ser mayor al superior. Ingrese nuevamente los datos.")
-                    
                     if a==b:
                         print("El limite inferior y el limite superior no pueden ser iguales. Ingrese nuevamente los datos.")
                     else:
